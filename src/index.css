@@ -1,0 +1,62 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: radial-gradient(
+    circle,
+    rgba(174, 237, 238, 1) 0%,
+    rgba(148, 187, 233, 1) 100%
+  );
+}
+
+h1 {
+  &:hover {
+    h1 {
+      background-color: rgb(25, 25, 119);
+    }
+  }
+}
+
+.navbars {
+  background-color: orange;
+  transition: all 0.5s;
+  &:hover {
+    background-color: red;
+    transition: all 0.5s;
+  }
+}
+
+.inputStyle {
+  width: 400px !important;
+  justify-self: center;
+}
+
+.card {
+  width: 300px;
+  min-width: 300px !important;
+  height: 400px !important;
+  overflow: hidden;
+
+  &:hover {
+    .hideLabel {
+      bottom: 0px !important;
+      transition: all 0.3s;
+    }
+  }
+}
+
+.cardImg {
+  object-fit: contain;
+  height: 100%;
+  overflow: hidden;
+}
+
+.hideLabel {
+  background-color: rgba(0, 0, 0, 0.587);
+  font-size: 1.2rem;
+  overflow: hidden !important;
+  bottom: -100px !important;
+}

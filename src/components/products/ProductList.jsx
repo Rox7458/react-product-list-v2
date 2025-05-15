@@ -21,10 +21,14 @@ const ProductList = () => {
   return (
     <>
       <div>
-        <Navbar bg="primary" data-bs-theme="dark">
-          <Container className="d-flex flex-*-wrap justify-content-center">
-            {categories.map((category) => (
-              <Navbar.Brand onClick={() => setElected(category)}>
+        <Navbar>
+          <Container className="flex-wrap justify-content-center">
+            {categories.map((category, index) => (
+              <Navbar.Brand
+                key={index}
+                className=" rounded p-1 m-1  navbars"
+                onClick={() => setElected(category)}
+              >
                 {category.toUpperCase()}
               </Navbar.Brand>
             ))}
@@ -32,7 +36,7 @@ const ProductList = () => {
         </Navbar>
 
         <div>
-          <InputGroup className="mb-3 mt-3">
+          <InputGroup className="d-flex justify-content-center m-3  inputStyle">
             <Form.Control
               onChange={(e) => setFromInput(e.target.value)}
               aria-label="Default"
@@ -43,7 +47,10 @@ const ProductList = () => {
         </div>
       </div>
 
-      <div>
+      <div
+        className="d-flex flex-wrap  justify-content-center
+      "
+      >
         {searchedNewProducts.map((data) => (
           <ProductCard key={data.id} data={data} />
         ))}
