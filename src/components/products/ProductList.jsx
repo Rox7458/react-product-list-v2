@@ -8,30 +8,26 @@ import { categories, products } from "../../helper/data";
 
 const ProductList = () => {
   const [fromInput, setFromInput] = useState("");
-  const [birkategori, setBirkategori] = useState("electronics");
-  console.log(birkategori);
+  const [elected, setElected] = useState("");
 
   let newProducts = products.filter((product) =>
     product.title.toLocaleLowerCase().includes(fromInput.toLowerCase().trim())
   );
 
-  const fonksiyoncalis = () => {
-    newProducts = products.filter((product) =>
-      product.category.toLocaleLowerCase().includes(setBirkategori)
-    );
-    setBirkategori();
-  };
+  let searchedNewProducts = newProducts.filter((product) =>
+    product.category.startsWith(elected === "all" ? "" : elected)
+  );
 
   return (
     <>
       <div>
         <Navbar bg="primary" data-bs-theme="dark">
           <Container className="d-flex flex-*-wrap justify-content-center">
-            <Navbar.Brand>ALL</Navbar.Brand>
-            <Navbar.Brand onClick={fonksiyoncalis}>ELECTRONICS</Navbar.Brand>
-            <Navbar.Brand>JEWELERY</Navbar.Brand>
-            <Navbar.Brand>MEN'S CLOTHING</Navbar.Brand>
-            <Navbar.Brand>WOMEN'S CLOTHING</Navbar.Brand>
+            {categories.map((category) => (
+              <Navbar.Brand onClick={() => setElected(category)}>
+                {category.toUpperCase()}
+              </Navbar.Brand>
+            ))}
           </Container>
         </Navbar>
 
@@ -48,7 +44,7 @@ const ProductList = () => {
       </div>
 
       <div>
-        {newProducts.map((data) => (
+        {searchedNewProducts.map((data) => (
           <ProductCard key={data.id} data={data} />
         ))}
       </div>
